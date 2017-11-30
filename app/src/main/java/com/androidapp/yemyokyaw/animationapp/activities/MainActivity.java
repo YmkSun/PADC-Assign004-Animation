@@ -1,22 +1,47 @@
 package com.androidapp.yemyokyaw.animationapp.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.androidapp.yemyokyaw.animationapp.R;
+import com.androidapp.yemyokyaw.animationapp.adapter.RvItemAdapter;
+import com.androidapp.yemyokyaw.animationapp.delegates.RvItemDelegates;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class MainActivity extends AppCompatActivity implements RvItemDelegates {
+
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+
+    @BindView(R.id.rv)
+    RecyclerView rv;
+
+    public static Intent newIntent(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this, this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        rv.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        RvItemAdapter newsAdapter = new RvItemAdapter(getApplicationContext(), this);
+        rv.setAdapter(newsAdapter);
     }
 
     @Override
@@ -45,10 +74,19 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_profile) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void clickProfile(View v){
+        drawerLayout.openDrawer(GravityCompat.END);
+    }
+
+    @Override
+    public void onTapItem() {
+
     }
 }

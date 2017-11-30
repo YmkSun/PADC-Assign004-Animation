@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">AnimationApp</string>
     <string name="action_settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="rv_list_text">ဒီ တပါတ် Before the Class အပိုုင်းမှာ လုုပ်ရမှာကတော့ စာဖတ်ထားရမှာ မဟုုတ်တော့ပါဘူး ။ Supporting Tablet and Dynamic UI ဆိုုတဲ့ အပိုုင်းကိုု ဆွေးနွေးနိုုင်ဖိုု့ ဒီ screen ကိုု project အသစ်တစ်ခုုယူပြီး implement လုုပ်ထားပေးရမှာ ဖြစ်ပါတယ် ။ POC Level ပဲ implement လုုပ်ပေးရမှာပါ ။</string>
 </resources>
