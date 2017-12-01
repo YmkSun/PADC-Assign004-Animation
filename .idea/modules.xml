@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PADC-Assign004-Animation.iml" filepath="$PROJECT_DIR$/PADC-Assign004-Animation.iml" />
+      <module fileurl="file://D:\workspace\android_pure_ws\PADC\PADC-Assign004-Animation\PADC-Assign004-Animation.iml" filepath="D:\workspace\android_pure_ws\PADC\PADC-Assign004-Animation\PADC-Assign004-Animation.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\workspace\android_pure_ws\PADC\PADC-Assign004-Animation\app\app.iml" filepath="D:\workspace\android_pure_ws\PADC\PADC-Assign004-Animation\app\app.iml" />
     </modules>
   </component>
 </project>
