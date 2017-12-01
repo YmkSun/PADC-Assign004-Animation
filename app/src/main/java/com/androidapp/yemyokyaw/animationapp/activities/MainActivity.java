@@ -1,5 +1,6 @@
 package com.androidapp.yemyokyaw.animationapp.activities;
 
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
@@ -67,6 +68,13 @@ public class MainActivity extends AppCompatActivity implements RvItemDelegates {
     }
 
     @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        animateAction(0f, 1.0f, 1.0f);
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -82,15 +90,20 @@ public class MainActivity extends AppCompatActivity implements RvItemDelegates {
     }
 
     public void clickProfile(View v){
-
-        mainLayout.setScaleX(0.7f);
-        mainLayout.setScaleY(0.7f);
-        ObjectAnimator animX = ObjectAnimator.ofFloat(mainLayout, "translationX", -300f);
-        animX.setDuration(500);
-        animX.start();
+        animateAction(-300f, 0.7f, 0.7f);
         Intent intent = ProfileActivity.newIntent(this);
         startActivity(intent);
         overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
+    public void animateAction(float tx, float sx, float sy) {
+        ObjectAnimator animX = ObjectAnimator.ofFloat(mainLayout, "translationX", tx);
+        ObjectAnimator animScX = ObjectAnimator.ofFloat(mainLayout, "scaleX", sx);
+        ObjectAnimator animScY = ObjectAnimator.ofFloat(mainLayout, "scaleY", sy);
+        AnimatorSet animSetXY = new AnimatorSet();
+        animSetXY.playTogether(animScX, animScY, animX);
+        animSetXY.setDuration(500);
+        animSetXY.start();
     }
 
     @Override
